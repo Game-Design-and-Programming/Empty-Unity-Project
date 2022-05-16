@@ -5,19 +5,34 @@ using TMPro;
 
 public class HUDController : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
+    public string healthLabel = "Health: ";
+    public string scoreLabel = "Score: ";
+    public int initialHealth;
+    public int initialScore;
+
     public TextMeshProUGUI healthText;
+    public TextMeshProUGUI scoreText;
+
+    private int _health;
+    private int _score;
 
     // Start is called before the first frame update
     void Start()
     {
-        scoreText.text = "Score: 42";
-        healthText.text = "Health: 3";
+        _health = initialHealth;
+        _score = initialScore;
     }
 
     // Update is called once per frame
-    void Update()
+    public void UpdateHealth(int h)
     {
-        
+        _health += h;
+        healthText.text = healthLabel + _health;
+    }
+
+    public void UpdateScore(int s)
+    {
+        _score += s;
+        scoreText.text = scoreLabel + _score;
     }
 }
