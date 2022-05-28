@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Reflection;
 using UnityEngine;
 using TMPro;
 
@@ -18,12 +19,16 @@ public class UIController : MonoBehaviour
 
     public string healthLabel = "Health: ";
     public string scoreLabel = "Score: ";
+    public string restartPrompt = "Shall we play another game?";
+    public string startPrompt = "Would you like to play a game?";
+
     public int initialHealth;
     public int initialScore;
     public bool gameOver;
 
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI scoreText;
+    public TextMeshProUGUI startPromptText;
 
     public KeyCode pauseKey = KeyCode.Pause;
 
@@ -34,8 +39,13 @@ public class UIController : MonoBehaviour
     void Start()
     {
         gameOver = false;
+
         _health = initialHealth;
         _score = initialScore;
+
+        // Start Panel
+        restartPromptText.text = restartPrompt;
+        startPromptText.text = startPrompt;
     }
 
     void Update()
@@ -62,6 +72,36 @@ public class UIController : MonoBehaviour
     {
         _score += s;
         scoreText.text = scoreLabel + _score;
+    }
+
+    public void ButtonPlayYes()
+    {
+        Debug.Log(this.GetType().Name + "." + MethodBase.GetCurrentMethod().Name);
+    }
+
+    public void ButtonPlayNo()
+    {
+        Debug.Log(this.GetType().Name + "." + MethodBase.GetCurrentMethod().Name);
+    }
+
+    public void ButtonRestart()
+    {
+        Debug.Log(this.GetType().Name + "." + MethodBase.GetCurrentMethod().Name);
+    }
+
+    public void ButtonPause()
+    {
+        Debug.Log(this.GetType().Name + "." + MethodBase.GetCurrentMethod().Name);
+    }
+
+    public void ButtonQuit()
+    {
+        Debug.Log(this.GetType().Name + "." + MethodBase.GetCurrentMethod().Name);
+    }
+
+    void EndGame()
+    {
+        Debug.Log(this.GetType().Name + "." + MethodBase.GetCurrentMethod().Name);
     }
 
     private void PauseGame()
